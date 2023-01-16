@@ -100,8 +100,56 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "ultra-marketplace:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ultra-marketplace:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "ultra-marketplace:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "ultra-marketplace:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "ultra-marketplace:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ultra-marketplace:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b3279a9d-9761-434e-96f6-9dc6e1488445"
   }
 }
