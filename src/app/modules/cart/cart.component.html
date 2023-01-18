@@ -1,1 +1,45 @@
-<p>cart works!</p>
+<app-layout>
+
+    <ul class="cart__products" *ngIf="(products$ | async)">
+      <li class="product" *ngFor="let product of (products$ | async )">
+
+        <div class="product__shadow"></div>
+
+        <div class="product__img">
+          <img [src]="product.img" [alt]="product.name">
+        </div>
+        <div class="product__content">
+          <h1 class="product__name">{{ product.name }}</h1>
+          <h2 class="product__price">{{ product.price | currency}}</h2>
+        </div>
+        <div class="product__delete">
+          <button (click)="onProductRemove(product)">
+              <img src="../../../assets/icons/recycle-bin.png">
+          </button>
+        </div>
+
+
+
+      </li>
+
+      <li class="total">
+        <span>Total: </span> <span> {{ (total$ | async) | currency }}</span>
+      </li>
+
+      <li class="checkout" [ngClass]="{'blocked': (isDisabled$ | async)}">
+        <h3 class="checkout__error_message">
+          Sorry, balance is not suficient <br>
+        </h3>
+        <button type="submit" [disabled]="(isDisabled$ | async)" [routerLink]="'/checkout'">
+          Checkout
+        </button>
+      </li>
+    </ul>
+
+    <div class="cart__empty" *ngIf="(products$ | async)?.length === 0">
+      <img src="../../../assets/icons/empty-cart.png" alt="Empty Cart">
+        <h1>Your Basket is Currently Empty!</h1>
+        <a [routerLink]="'/products'"> Return to Shop </a>
+    </div>
+
+</app-layout>

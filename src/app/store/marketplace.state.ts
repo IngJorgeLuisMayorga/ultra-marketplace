@@ -3,7 +3,8 @@ import {State, Action, StateContext, Selector} from '@ngxs/store';
 import { tap } from 'rxjs';
 import { Product } from '../modules/products/models/Product.model';
 import { ProductsRepositoryService } from '../modules/products/services/products-repository.service';
-import { AddProductToCart, FetchProducts } from './marketplace.actions';
+import { mock_src } from '../shared/helpers/mockSrc';
+import { AddProductToCart, FetchProducts, RemoveProductToCart } from './marketplace.actions';
 import { DefaultMarketPlace, IMarketplace } from './marketplace.model';
 
 @State<IMarketplace>({
@@ -22,13 +23,24 @@ export class MarketplaceState {
   }
 
   @Selector()
+  static getCartTotal(state: IMarketplace):number {
+      return state.cartStore.total;
+  }
+
+  @Selector()
   static getProducts(state: IMarketplace): Product[] {
-      return state.productsStore.products;
+      return state.productsStore.products.map( item => ({
+        ...item,
+        img: mock_src(item.id)
+      }));
   }
 
   @Selector()
   static getProductsInCart(state: IMarketplace): Product[] {
-      return state.cartStore.products;
+      return state.cartStore.products.map( item => ({
+        ...item,
+        img: mock_src(item.id)
+      }));
   }
 
   @Selector()
@@ -69,8 +81,6 @@ export class MarketplaceState {
       const productsStore = Object.assign({}, {...state.productsStore });
       const cartStore = Object.assign({}, {...state.cartStore });
 
-      console.log(' @Action :: addToCart ', action)
-
       // Update Aviability product in ProductsStore
       productsStore.products = productsStore.products.map(product => {
         if(product.id === productId){
@@ -83,6 +93,38 @@ export class MarketplaceState {
 
       // Push Product to Cart
       cartStore.products = Array.from(new Set([...cartStore.products, product]));
+      cartStore.count = cartStore.products.length;
+      cartStore.total = cartStore.products.map(item => item.price).reduce((curr, sum) => (curr) + sum, 0);
+
+      setState({
+        ...state,
+        productsStore: productsStore,
+        cartStore: cartStore
+      });
+
+    }
+
+  @Action(RemoveProductToCart)
+    removeFromCart({getState, setState}: StateContext<IMarketplace>, action: AddProductToCart) {
+
+      const state = getState();
+      const product = action.payload;
+      const productId = product.id;
+      const productsStore = Object.assign({}, {...state.productsStore });
+      const cartStore = Object.assign({}, {...state.cartStore });
+
+      // Update Aviability product in ProductsStore
+      productsStore.products = productsStore.products.map(product => {
+        if(product.id === productId){
+          return {
+            ...product,
+            available: true,
+          }
+        } else return product;
+      });
+
+      // Push Product to Cart
+      cartStore.products = cartStore.products.filter(item => item.id !== productId);
       cartStore.count = cartStore.products.length;
       cartStore.total = cartStore.products.map(item => item.price).reduce((curr, sum) => (curr) + sum, 0);
 

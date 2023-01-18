@@ -18,7 +18,7 @@ export class ProductsMockService implements IProductsAPI {
   }
 
   getRandomSleepTime(){
-    return Math.floor(Math.random() * (5000 - 500) + 500);
+    return Math.floor(Math.random() * (500 - 50) + 50);
   }
 
 
