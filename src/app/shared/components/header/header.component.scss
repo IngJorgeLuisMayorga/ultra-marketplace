@@ -1,0 +1,62 @@
+@import './../../../../styles/variables';
+@import './../../../../styles/colors';
+@import './../../../../styles/fonts';
+
+
+.header{
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 1em 2.5em;
+  background-color: $color-black;
+}
+
+.header__title {
+  flex: 1 1 auto;
+}
+
+.header__title h1{
+  @include font-page-title;
+  color: $color-white;
+  padding: 0px;
+  margin: 0.5em;
+  margin-left: 0px;
+}
+
+.header__total{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+
+  span{
+    font-size: $font-size-xl;
+    font-weight: $font-bold;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  img{
+    filter: invert(100%);
+    width: 50px;
+  }
+}
+.header__cart{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0 0 auto;
+  padding-left: 1em;
+  span{
+    font-size: $font-size-xxl;
+    font-weight: $font-bold;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  img{
+    filter: invert(100%);
+    width: 50px;
+  }
+}

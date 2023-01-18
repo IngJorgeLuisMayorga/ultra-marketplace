@@ -1,0 +1,44 @@
+@import './colors';
+
+$font-size-xxs: 10px;
+$font-size-xs: 12px;
+$font-size-s: 14px;
+$font-size-m: 16px;
+$font-size-l: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 24px;
+
+$font-size-big-title: 60px;
+
+
+$font-bold: 900;
+
+@font-face {
+  font-family: "Ultra";
+  src: url(../assets/fonts/InterUltra-Regular.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Ultra";
+  src: url(../assets/fonts/InterUltra-Bold.otf);
+  font-weight: bold;
+}
+
+@mixin font-default {
+  font-family: "Ultra";
+  font-size: $font-size-m;
+  font-weight: 300;
+  color: $color-white;
+  line-height: 120%;
+}
+
+
+@mixin font-page-title {
+  font-family: "Ultra";
+  font-size: $font-size-big-title;
+  font-weight: $font-bold;
+  color: $color-black;
+  line-height: 120%;
+  letter-spacing: 1px;
+}

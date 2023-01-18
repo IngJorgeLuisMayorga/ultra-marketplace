@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/reset';
+@import './styles/colors';
+@import './styles/fonts';
+@import './styles/variables';
+
+
+body{
+  @include font-default;
+}
