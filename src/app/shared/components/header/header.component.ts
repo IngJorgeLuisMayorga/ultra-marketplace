@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import {Select, Store} from '@ngxs/store';
+import { MarketplaceState } from 'src/app/store/marketplace.state';
+import { IMarketplace } from 'src/app/store/marketplace.model';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +13,13 @@ export class HeaderComponent implements OnInit {
 
   public title: string = 'Marketplace';
 
-  public total$: Observable<number>;
+  public wallet$: Observable<number>;
   public count$: Observable<number>;
 
-  constructor() {
-    this.total$ = of(0);
+  @Select(MarketplaceState.getBalance) balance$!: Observable<number>;
+
+  constructor(private store: Store) {
+    this.wallet$ = of(0);
     this.count$ = of(0);
   }
 

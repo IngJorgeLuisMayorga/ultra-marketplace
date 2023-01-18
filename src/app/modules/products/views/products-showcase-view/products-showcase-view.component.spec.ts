@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MarketplaceState } from 'src/app/store/marketplace.state';
+import { NgxsModule } from '@ngxs/store';
+
 
 import { ProductsShowcaseViewComponent } from './products-showcase-view.component';
 
@@ -10,7 +13,7 @@ describe('ProductsShowcaseViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, SharedModule],
+      imports: [RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState])],
       declarations: [ ProductsShowcaseViewComponent ]
     })
     .compileComponents();

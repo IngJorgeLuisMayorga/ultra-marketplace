@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxsModule } from '@ngxs/store';
 
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../shared.module';
+import { MarketplaceState } from 'src/app/store/marketplace.state';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -10,16 +12,18 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, SharedModule],
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule,
+        SharedModule,
+        NgxsModule.forRoot([MarketplaceState]),
+      ],
+      declarations: [HeaderComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
 
   // Selectors
   const selectorTitle = '.header__title h1';
@@ -31,12 +35,11 @@ describe('HeaderComponent', () => {
   //Values
   const valueTitle = 'Marketplace';
   const valueCartLink = '/basket';
-
+  const valueWalletDefault = '$100';
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
   // REQUERIMENT TEST 1
   it('should have a site title Marketplace', () => {
@@ -46,21 +49,26 @@ describe('HeaderComponent', () => {
   // REQUERIMENT TEST 2
   it('should render the site title inside h1 tag', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector(selectorTitle).textContent).toContain(valueTitle);
+    expect(compiled.querySelector(selectorTitle).textContent).toContain(
+      valueTitle,
+    );
   });
 
   // REQUERIMENT TEST 3
   it('should have a site title (with a click to redirect to home)', () => {
     const compiled = fixture.debugElement.nativeElement;
     const haveTitle = component.title === valueTitle;
-    const whenClickRedirectHome = compiled.querySelector(selectorTitleLink).getAttribute("href") === '/'
+    const whenClickRedirectHome =
+      compiled.querySelector(selectorTitleLink).getAttribute('href') === '/';
     expect(haveTitle && whenClickRedirectHome).toBeTruthy();
   });
 
   // REQUERIMENT TEST 4
   it('should have a wallet balance (have it initialised with a value)', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector(selectorTotalSpan).textContent).toContain('$0');
+    expect(compiled.querySelector(selectorTotalSpan).textContent).toContain(
+      valueWalletDefault,
+    );
   });
 
   // REQUERIMENT TEST 5
@@ -69,10 +77,11 @@ describe('HeaderComponent', () => {
     expect(compiled.querySelector(selectorCartSpan)).toBeTruthy();
   });
 
-    // REQUERIMENT TEST 5
-    it('should have a basket icon when a click on the basket will navigate to a basket route', () => {
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector(selectorCartLink).getAttribute("href")).toContain(valueCartLink);
-    });
-
+  // REQUERIMENT TEST 5
+  it('should have a basket icon when a click on the basket will navigate to a basket route', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(
+      compiled.querySelector(selectorCartLink).getAttribute('href'),
+    ).toContain(valueCartLink);
+  });
 });
