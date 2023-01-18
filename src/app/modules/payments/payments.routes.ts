@@ -3,7 +3,7 @@ import { PaymentsComponent } from "./payments.component";
 
 export const PaymentsRoutes: Routes = [
   {
-    path: '/payments',
+    path: 'payments',
     component: PaymentsComponent
   },
 ]

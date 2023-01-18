@@ -8,7 +8,10 @@ import { PaymentsRoutes } from './payments.routes';
   declarations: [
     PaymentsComponent
   ],
-  imports: [CommonModule,  RouterModule.forRoot(PaymentsRoutes)],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(PaymentsRoutes)
+  ],
   exports: [RouterModule]
 })
 export class PaymentsModule {}
