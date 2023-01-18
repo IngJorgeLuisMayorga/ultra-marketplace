@@ -5,6 +5,7 @@ export type Product = {
   stock: number;
   price: number;
   discount?: number;
+  available?: boolean;
   created_at: string;
   updated_at: string;
 }

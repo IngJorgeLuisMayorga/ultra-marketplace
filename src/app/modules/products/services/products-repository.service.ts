@@ -29,7 +29,12 @@ export class ProductsRepositoryService implements IProductsRepository{
 
   getAll(): Observable<Product[]>{
     return this.$api.getProducts().pipe(
-      map(products => products as Product[])
+      map(products => products.map(product => {
+        return {
+          ...product,
+          available: true,
+        }
+      }) as Product[])
     )
   }
 

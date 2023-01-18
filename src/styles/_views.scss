@@ -1,0 +1,25 @@
+.view-spinner{
+  opacity: 0;
+  transition: all 1s;
+  z-index: -1;
+  height: 0px;
+}
+.view-content{
+  opacity: 0;
+  transition: opacity 2s;
+  z-index: -1;
+}
+
+.view-spinner.show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  z-index: 1;
+  height: auto;
+}
+
+.view-content.show{
+  opacity: 1;
+  z-index: 1;
+}

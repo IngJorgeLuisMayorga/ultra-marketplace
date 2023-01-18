@@ -8,6 +8,7 @@ export interface IMarketplace {
   // Products
   productsStore:{
     products: Product[],
+    isLoading: boolean;
     pagination: {
       from : number;
       to: number;
@@ -52,6 +53,7 @@ export const DefaultMarketPlace: IMarketplace = {
 
   // Products
   productsStore:{
+    isLoading: true,
     products: [],
     pagination: {
       from : 0,

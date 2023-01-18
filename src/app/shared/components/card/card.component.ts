@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +7,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
+  @Input()
+  id!: number;
+
+  @Input()
+  img!: string;
+
+  @Input()
+  name!: string;
+
+  @Input()
+  price!: number;
+
+  @Input()
+  available!: boolean;
+
+  @Output()
+  onClick = new EventEmitter();
+
+  public loading = true;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.loading = false;
+  }
+
+  clickHandler(){
+    if(this.available) this.onClick.emit()
+  }
+
+
+  get isLoading(): boolean{
+    return this.loading
+  }
+
+  get isAvailable(): boolean{
+    return !this.loading
+  }
+
+  get isNotAvailable(): boolean{
+    return !this.loading && !this.available
+  }
+
+  get imgMock(): string{
+    return `https://picsum.photos/seed/${this.id}/400/400`;
   }
 
 }

@@ -13,14 +13,11 @@ export class HeaderComponent implements OnInit {
 
   public title: string = 'Marketplace';
 
-  public wallet$: Observable<number>;
-  public count$: Observable<number>;
 
   @Select(MarketplaceState.getBalance) balance$!: Observable<number>;
+  @Select(MarketplaceState.getCartCount) count$!: Observable<number>;
 
   constructor(private store: Store) {
-    this.wallet$ = of(0);
-    this.count$ = of(0);
   }
 
   ngOnInit(): void {

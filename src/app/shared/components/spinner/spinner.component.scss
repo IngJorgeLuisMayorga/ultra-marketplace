@@ -1,0 +1,39 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+h1{
+  font-family: 'Ultra';
+  font-size: $font-size-l;
+  letter-spacing: 1px;
+
+  margin-top: 1em;
+}
+
+.spinner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 14.1px solid;
+  border-color: #dbdcef;
+  border-right-color: $color-purple;
+  animation: spinner-d3wgkg 1.2s infinite linear;
+  overflow: hidden;
+}
+
+@keyframes spinner-d3wgkg {
+  to {
+     transform: rotate(1turn);
+  }
+}

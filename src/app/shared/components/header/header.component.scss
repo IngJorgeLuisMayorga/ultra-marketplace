@@ -7,11 +7,16 @@
   display: flex;
   justify-content: flex-end;
 
+  position: sticky;
+  top: 0px;
+
   width: 100%;
   box-sizing: border-box;
 
   padding: 1em 2.5em;
   background-color: $color-black;
+
+  z-index: 2;
 }
 
 a, a:visited, a:hover, a:active {
@@ -29,7 +34,7 @@ a, a:visited, a:hover, a:active {
   @include font-page-title;
   color: $color-white;
   padding: 0px;
-  margin: 0.5em;
+  margin: 0.15em;
   margin-left: 0px;
 }
 

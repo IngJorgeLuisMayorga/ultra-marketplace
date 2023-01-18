@@ -1,0 +1,27 @@
+.products{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  grid-gap: 20px;
+
+}
+
+/*
+.product{
+  width: calc(25% - 12px);
+  margin-right: 1em;
+  margin-bottom: 1em;
+  &:nth-child(4){
+    margin-right: 0em;
+  }
+}
+
+*/

@@ -1,1 +1,22 @@
-<p>card works!</p>
+<div class="card" (click)="clickHandler()">
+
+  <div class="card__loading" *ngIf="isLoading">
+
+  </div>
+
+  <div class="card__container" *ngIf="isAvailable">
+    <div class="card__image">
+      <img [src]="imgMock" [alt]="name">
+    </div>
+    <div class="card__content">
+      <h2 class="card__name">{{ name }} </h2>
+      <h3 class="card__price">{{ price | currency }}</h3>
+    </div>
+  </div>
+
+  <div class="card__not_available" *ngIf="isNotAvailable">
+    <img src="../../../../assets/icons/ecommerce.png">
+      <h1>Already in Cart</h1>
+  </div>
+
+</div>

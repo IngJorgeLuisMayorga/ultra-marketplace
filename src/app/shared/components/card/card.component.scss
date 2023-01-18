@@ -1,0 +1,105 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/variables';
+
+$border-size: 5px;
+
+.card{
+  position: relative;
+}
+
+.card__loading {
+  display: none;
+}
+
+.card__container {
+  display: block;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.card__in_cart {
+  display: none;
+}
+
+.card__image {
+  width: 100%;
+  box-sizing: border-box;
+  height: $card-height;
+
+  border-top: $border-size solid $color-purple;
+  border-left: $border-size solid $color-purple;
+  border-right: $border-size solid $color-purple;
+
+  border-top-right-radius: $border-size;
+  border-top-left-radius: $border-size;
+
+  img {
+    width: 100%;
+    height: $card-height;
+    object-fit: cover;
+    object-position: center;
+
+    border-top-right-radius: $border-size;
+    border-top-left-radius: $border-size;
+  }
+}
+
+.card__content {
+  color: $color-white;
+  background-color: $color-purple;
+  border-bottom: $border-size solid $color-purple;
+  border-left: $border-size solid $color-purple;
+  border-right: $border-size solid $color-purple;
+
+  border-bottom-right-radius: $border-size;
+  border-bottom-left-radius: $border-size;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 1em;
+}
+
+.card__name {
+  font-family: 'Ultra';
+  font-size: $font-size-l;
+  text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card__price {
+  font-family: 'Ultra';
+  font-size: $font-size-m;
+  text-align: center;
+}
+
+.card__not_available{
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+
+    background-color: rgba($color-purple, .85);
+    color: $color-white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+      filter: invert(100%);
+      width: 50px;
+    }
+    h1{
+      color: white;
+    }
+
+}

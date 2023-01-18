@@ -2,4 +2,12 @@
 
 main{
   background-color: $color-black;
+  min-height: 100vh;
+}
+.container{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 40px;
+  position: relative;
+
 }

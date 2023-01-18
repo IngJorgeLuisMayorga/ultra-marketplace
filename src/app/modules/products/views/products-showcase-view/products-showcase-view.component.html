@@ -1,8 +1,25 @@
 <app-layout>
-    <h1>PRODUCTS</h1>
-    <ul>
-      <li *ngFor="let product of (products$ | async |  slice: 0: end)">
-        {{ product.name}}
-      </li>
-    </ul>
+
+    <div class="view-spinner" [ngClass]="{ show: (isLoading$ | async) }">
+      <app-spinner
+        [message]="message"
+      ></app-spinner>
+    </div>
+
+    <div class="view-content" [ngClass]="{ show: !(isLoading$ | async) }">
+      <ul class="products" *ngIf="(products$ | async)">
+        <li class="product" *ngFor="let product of (products$ | async )">
+          <app-card
+            [id]="product.id"
+            [img]="product.img"
+            [name]="product.name"
+            [price]="product.price"
+            [available]="product.available === undefined ? true : product.available"
+            (onClick)="onProductClick(product)"
+          ></app-card>
+        </li>
+      </ul>
+    </div>
+
+
 </app-layout>
