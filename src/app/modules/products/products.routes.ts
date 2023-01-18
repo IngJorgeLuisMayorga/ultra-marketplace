@@ -10,12 +10,12 @@ export const ProductsRoutes: Routes = [
     children: [
       {
         path: '',
-        title: "'Products | Ultra Marketplace'",
+        title: "Products | Ultra Marketplace",
         component: ProductsShowcaseViewComponent
       },
       {
         path: 'detail/:id',
-        title: "´Product ${:id} | Ultra Marketplace´",
+        title: "Product ${:id} | Ultra Marketplace",
         component: ProductDetailViewComponent
       }
     ]
