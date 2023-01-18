@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class ProductsShowcaseViewComponent implements OnInit {
 
-  constructor(private titleService:Title) {
+  constructor() {
 
   }
 

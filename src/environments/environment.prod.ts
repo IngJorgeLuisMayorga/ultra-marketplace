@@ -1,9 +1,5 @@
 export const environment = {
   production: true,
-  apis: {
-    auth: "",
-    user: "",
-    products: "",
-    cart: "",
-  },
+  mock: true,
+  endpoint: ''
 };
