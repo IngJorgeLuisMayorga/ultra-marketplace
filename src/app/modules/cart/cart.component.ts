@@ -27,13 +27,7 @@ export class CartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.store.dispatch(new FetchProducts()).subscribe(response => {
-      const products = response.marketplace.productsStore.products;
-      this.store.dispatch(new AddProductToCart(products[0]))
-      this.store.dispatch(new AddProductToCart(products[1]))
-      this.store.dispatch(new AddProductToCart(products[2]))
-      console.error('REPONSE STORE', response)
-    })
+
   }
 
   isDisabled(total: number, balance: number): boolean{
@@ -42,10 +36,6 @@ export class CartComponent implements OnInit {
 
   onProductRemove(product: Product){
     this.store.dispatch(new RemoveProductToCart(product))
-  }
-
-  onCheckout(){
-
   }
 
 }

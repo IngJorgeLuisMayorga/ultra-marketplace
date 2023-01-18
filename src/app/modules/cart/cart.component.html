@@ -1,10 +1,9 @@
 <app-layout>
 
-    <ul class="cart__products" *ngIf="(products$ | async)">
+    <ul class="cart__products" *ngIf="(products$ | async) && (products$ | async)  && (products$ | async)?.length !== 0">
+
       <li class="product" *ngFor="let product of (products$ | async )">
-
         <div class="product__shadow"></div>
-
         <div class="product__img">
           <img [src]="product.img" [alt]="product.name">
         </div>
@@ -17,13 +16,10 @@
               <img src="../../../assets/icons/recycle-bin.png">
           </button>
         </div>
-
-
-
       </li>
 
-      <li class="total">
-        <span>Total: </span> <span> {{ (total$ | async) | currency }}</span>
+      <li class="total" >
+        <span>Total: </span> <span class="total__value"> {{ (total$ | async) | currency }}</span>
       </li>
 
       <li class="checkout" [ngClass]="{'blocked': (isDisabled$ | async)}">
