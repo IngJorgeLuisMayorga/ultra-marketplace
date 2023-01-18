@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
+import { AddProductToCart, FetchProducts } from 'src/app/store/marketplace.actions';
 import { MarketplaceState } from 'src/app/store/marketplace.state';
 
 @Component({
@@ -12,13 +13,19 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private store: Store, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    await this.init();
 
     //Check if Store has products
     this.validateRoute();
 
+  }
 
-
+  async init(){
+    const response = await this.store.dispatch(new FetchProducts()).toPromise();
+    const products = response.marketplace.productsStore.products;
+    await this.store.dispatch(new AddProductToCart(products[0])).toPromise();
   }
 
   validateRoute(){

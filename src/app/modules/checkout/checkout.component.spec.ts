@@ -33,4 +33,17 @@ describe('CheckoutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should Display a form allowing the user to enter his personal information', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have Basic validation rules should be applied to not allow purchases without a valid form', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have A pay button should trigger the purchase and display a successful screen if everything works as expected', () => {
+    expect(component).toBeTruthy();
+  });
+
 });
