@@ -5,7 +5,7 @@ import { SignupViewComponent } from "./views/signup-view/signup-view.component";
 
 export const AuthRoutes: Routes = [
   {
-    path: '/auth',
+    path: 'auth',
     component: AuthComponent,
     children: [
       {
