@@ -3,7 +3,7 @@ import { CheckoutComponent } from "./checkout.component";
 
 export const CheckoutRoutes: Routes = [
   {
-    path: '/checkout',
+    path: 'checkout',
     component: CheckoutComponent
   },
 ]
