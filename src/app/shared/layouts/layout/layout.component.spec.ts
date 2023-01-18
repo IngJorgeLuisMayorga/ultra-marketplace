@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared.module';
 
 import { LayoutComponent } from './layout.component';
 import { NgxsModule } from '@ngxs/store';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
@@ -12,7 +13,7 @@ describe('LayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[ RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState])],
+      imports:[ RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState]), HttpClientTestingModule],
       declarations: [ LayoutComponent ]
     })
     .compileComponents();

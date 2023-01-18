@@ -6,6 +6,7 @@ import { NgxsModule } from '@ngxs/store';
 
 
 import { ProductsShowcaseViewComponent } from './products-showcase-view.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProductsShowcaseViewComponent', () => {
   let component: ProductsShowcaseViewComponent;
@@ -13,7 +14,7 @@ describe('ProductsShowcaseViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState])],
+      imports: [RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState]), HttpClientTestingModule],
       declarations: [ ProductsShowcaseViewComponent ]
     })
     .compileComponents();

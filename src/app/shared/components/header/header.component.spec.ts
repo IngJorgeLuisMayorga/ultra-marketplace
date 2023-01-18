@@ -5,6 +5,7 @@ import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../shared.module';
 import { MarketplaceState } from 'src/app/store/marketplace.state';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -15,6 +16,7 @@ describe('HeaderComponent', () => {
       imports: [
         RouterTestingModule,
         SharedModule,
+        HttpClientTestingModule,
         NgxsModule.forRoot([MarketplaceState]),
       ],
       declarations: [HeaderComponent],

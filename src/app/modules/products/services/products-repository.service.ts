@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IProductsAPI } from '../interfaces/IProductAPI.interace';
 import { IProductsRepository } from '../interfaces/IProductsRepository.interface';
@@ -26,10 +27,10 @@ export class ProductsRepositoryService implements IProductsRepository{
 
   }
 
-  async getAll(): Promise<Product[]>{
-    const httpProducts = await this.$api.getProducts();
-    const products = httpProducts.map(httpProduct => httpProduct as Product);
-    return products;
+  getAll(): Observable<Product[]>{
+    return this.$api.getProducts().pipe(
+      map(products => products as Product[])
+    )
   }
 
   getById(id: number): Promise<Product | null>{

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map, Observable, of, timer } from 'rxjs';
 import { IProductsAPI } from '../interfaces/IProductAPI.interace';
 import { IProductHTTP } from '../interfaces/IProductHTTP.interface';
 import productsMock from '../mocks/products.mock';
@@ -11,13 +12,9 @@ export class ProductsMockService implements IProductsAPI {
 
   constructor() { }
 
-  getProducts(): Promise<IProductHTTP[]>{
-    return new Promise((resolve => {
+  getProducts(): Observable<IProductHTTP[]>{
       const MOCK_TIME = this.getRandomSleepTime(); // miliseconds
-      setTimeout(() => {
-        resolve(productsMock)
-      }, MOCK_TIME)
-    }));
+      return timer(MOCK_TIME).pipe(map((i) => productsMock))
   }
 
   getRandomSleepTime(){

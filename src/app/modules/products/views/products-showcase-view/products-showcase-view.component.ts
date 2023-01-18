@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { AddProduct } from '../../products.actions';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { MarketplaceState } from 'src/app/store/marketplace.state';
+import { FetchProducts } from '../../../../store/marketplace.actions';
+import { Product } from '../../models/Product.model';
 
 @Component({
   selector: 'app-products-showcase-view',
@@ -9,24 +12,23 @@ import { AddProduct } from '../../products.actions';
 })
 export class ProductsShowcaseViewComponent implements OnInit {
 
+  @Select(MarketplaceState.getProducts) products$!: Observable<Product[]>;
+
+  public end = 12;
+
   constructor(private store: Store) {}
 
   ngOnInit(): void {
 
+    //Initial Load
+    this.fetchProducts();
+
   }
 
-  addAnimal(name: string) {
-    this.store.dispatch(new AddProduct({
-      id: 0,
-      name: '',
-      img: '',
-      price: 0,
-      discount: 0,
-      stock: 0,
-      updated_at: new Date().toString(),
-      created_at: new Date().toString()
-    }));
+  fetchProducts(){
+    this.store.dispatch(new FetchProducts())
   }
+
 
 
 
