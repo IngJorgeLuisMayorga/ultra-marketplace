@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
   public count$: Observable<number>;
 
   constructor() {
-    this.total$ = of(100.232);
-    this.count$ = of(23);
+    this.total$ = of(0);
+    this.count$ = of(0);
   }
 
   ngOnInit(): void {
