@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartDetailsViewComponent } from './views/cart-details-view/cart-details-view.component';
 import { CartComponent } from './cart.component';
 import { RouterModule } from '@angular/router';
+import { AuthRoutes } from '../auth/auth.routes';
 
 @NgModule({
   declarations: [
