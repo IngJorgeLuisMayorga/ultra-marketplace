@@ -14,6 +14,13 @@
   background-color: $color-black;
 }
 
+a, a:visited, a:hover, a:active {
+  color: inherit;
+  align-items: center;
+  display: flex;
+  text-decoration: inherit;
+}
+
 .header__title {
   flex: 1 1 auto;
 }
@@ -31,7 +38,7 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-
+  padding-left: 1em;
   span{
     font-size: $font-size-xl;
     font-weight: $font-bold;
@@ -49,6 +56,16 @@
   align-items: center;
   flex: 0 0 auto;
   padding-left: 1em;
+  box-sizing: border-box;
+  a{
+    padding: 1em;
+    border-radius: 1em;
+  }
+  a:hover{
+    background-color: $color-purple;
+    color:$color-white;
+    box-sizing: border-box;
+  }
   span{
     font-size: $font-size-xxl;
     font-weight: $font-bold;
