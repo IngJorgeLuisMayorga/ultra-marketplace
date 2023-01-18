@@ -5,7 +5,7 @@ import { CheckoutRoutes } from './checkout.route';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {InputTextModule} from 'primeng/inputtext';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CheckoutComponent
   ],
   imports: [
-    CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(CheckoutRoutes)
+    CommonModule, SharedModule, FormsModule, InputTextModule, ReactiveFormsModule, RouterModule.forRoot(CheckoutRoutes)
   ],
   exports: [
     RouterModule
