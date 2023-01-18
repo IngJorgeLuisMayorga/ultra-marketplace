@@ -4,6 +4,7 @@ import { CheckoutComponent } from './checkout.component';
 import { CheckoutRoutes } from './checkout.route';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CheckoutComponent
   ],
   imports: [
-    CommonModule, SharedModule, RouterModule.forRoot(CheckoutRoutes)
+    CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(CheckoutRoutes)
   ],
   exports: [
     RouterModule

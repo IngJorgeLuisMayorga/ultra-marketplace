@@ -1,9 +1,23 @@
 <app-layout>
 
  <div class="checkout">
-  <form class="checkout__form">
+  <form class="checkout__form" [formGroup]="form"  (ngSubmit)="formSubmit()">
+
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input type="text" pInputText placeholder="Username" formControlName="firstname">
+    </div>
+
+
+<span class="p-float-label">
+  <input id="float-input" type="text" pInputText>
+  <label for="float-input">Username</label>
+</span>
 
   </form>
+
+  {{form.value | json}}
+
  </div>
 
 </app-layout>

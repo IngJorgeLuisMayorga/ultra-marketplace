@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { AddProductToCart, FetchProducts } from 'src/app/store/marketplace.actions';
 import { MarketplaceState } from 'src/app/store/marketplace.state';
 
+const regexAddres = "^[\w\s ,.#-]+$";
+const regexCity = "/^[a-zA-Z\u0080-\u024F]+(?:([\ \-\']|(\.\ ))[a-zA-Z\u0080-\u024F]+)*$/";
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+
+  form = new FormGroup({
+    "firstname": new FormControl("", [Validators.required, Validators.minLength(2)]),
+    "lastname": new FormControl("", [Validators.required, Validators.minLength(2)]),
+    "address": new FormControl("", [Validators.required, Validators.pattern(regexAddres), Validators.minLength(2)]),
+    "city": new FormControl("", [Validators.required, Validators.pattern(regexCity),Validators.minLength(2)]),
+    "state": new FormControl("", [Validators.required, Validators.minLength(2)]),
+    "email": new FormControl("", [Validators.required, Validators.email]),
+});
+
 
   constructor(private store: Store, private router: Router) { }
 
@@ -44,5 +57,13 @@ export class CheckoutComponent implements OnInit {
     }
 
   }
+
+  formSubmit(){
+
+  }
+
+  formReset() {
+    this.form.reset();
+}
 
 }
