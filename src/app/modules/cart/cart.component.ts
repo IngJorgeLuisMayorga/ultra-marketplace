@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
 
   public isDisabled$: Observable<boolean> =  combineLatest([this.total$, this.balance$]).pipe(map(response => response[0] >= response[1] ))
   public empty_cart_src = `${environment.assets}assets/icons/empty-cart.png`;
+  public delete_cart_src = `${environment.assets}assets/icons/recycle-bin.png`;
 
 
   constructor(private store: Store) {

@@ -156,7 +156,7 @@ export class MarketplaceState {
         date: new Date(),
         products:cartProducts
       });
-      userStore.balance = 0;
+      userStore.balance = userStore.balance - cartTotal;
       userStore.purchases = purchases;
 
       // Remove Products from Store

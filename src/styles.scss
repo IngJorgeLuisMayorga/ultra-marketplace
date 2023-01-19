@@ -5,6 +5,9 @@
 @import './styles/variables';
 @import './styles/views';
 
+a{
+  text-decoration: none;
+}
 
 body{
   @include font-default;
