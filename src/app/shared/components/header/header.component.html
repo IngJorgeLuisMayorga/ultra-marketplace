@@ -5,12 +5,12 @@
         </a>
     </div>
     <div class="header__total">
-      <img src="../../.././../assets/icons/wallet.png" alt="Money in Wallet">
+      <img src="./assets/icons/wallet.png" alt="Money in Wallet">
       <span>  ${{ balance$ | async | number: '1.0-0' }} </span>
     </div>
     <div class="header__cart">
       <a [routerLink]="['/basket']">
-        <img src="../../.././../assets/icons/online-shopping.png" alt="Total Number of Products in Cart">
+        <img src="./assets/icons/online-shopping.png" alt="Total Number of Products in Cart">
         <span> Basket {{ count$ | async | number: '1.0-0' }}</span>
       </a>
     </div>
