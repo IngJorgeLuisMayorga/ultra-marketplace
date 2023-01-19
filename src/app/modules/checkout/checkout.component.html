@@ -10,12 +10,12 @@
       <div class="field field-names">
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-firstname"
             type="text"
             pInputText
             formControlName="firstname"
           />
-          <label for="float-input">First name *</label>
+          <label for="float-input-firstname">First name *</label>
           <small id="firstname-help" class="p-error block">
             <h5 [hidden]="!!isValidFirstname">Firstname is not valid.</h5>
           </small>
@@ -23,12 +23,12 @@
 
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-lastname"
             type="text"
             pInputText
             formControlName="lastname"
           />
-          <label for="float-input">Last name *</label>
+          <label for="float-input-lastname">Last name *</label>
           <small id="lastname-help" class="p-error block">
             <h5 [hidden]="!!isValidLastname">Lastname is not valid.</h5>
           </small>
@@ -40,12 +40,12 @@
       <div class="field field-address">
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-address"
             type="text"
             pInputText
             formControlName="address"
           />
-          <label for="float-input">Address * </label>
+          <label for="float-input-address">Address * </label>
           <small id="address-help" class="p-error block">
             <h5 [hidden]="!!isValidAddres">Address is not valid.</h5>
           </small>
@@ -58,12 +58,12 @@
       <div class="field field-city-and-state">
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-city"
             type="text"
             pInputText
             formControlName="city"
           />
-          <label for="float-input">City</label>
+          <label for="float-input-city">City</label>
           <small id="city-help" class="p-error block">
             <h5 [hidden]="!!isValidCity">Firstname is not valid.</h5>
           </small>
@@ -71,12 +71,12 @@
 
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-state"
             type="text"
             pInputText
             formControlName="state"
           />
-          <label for="float-input">State</label>
+          <label for="float-input-state">State</label>
           <small id="state-help" class="p-error block">
             <h5 [hidden]="!!isValidState">State is not valid.</h5>
           </small>
@@ -89,12 +89,12 @@
       <div class="field field-names">
         <span class="p-float-label">
           <input
-            id="float-input"
+            id="float-input-email"
             type="text"
             pInputText
             formControlName="email"
           />
-          <label for="float-input">Email*</label>
+          <label for="float-input-email">Email*</label>
           <small id="email-help" class="p-error block">
             <h5 [hidden]="!!isValidEmail">Email is not valid.</h5>
           </small>
@@ -112,7 +112,7 @@
       <br>
 
       <div class="field-submit">
-        <button type="submit">
+        <button type="submit" id="submit-btn">
           Pay
         </button>
       </div>

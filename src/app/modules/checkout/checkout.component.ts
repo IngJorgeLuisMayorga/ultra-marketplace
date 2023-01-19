@@ -46,22 +46,16 @@ export class CheckoutComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  public paymentSuccesfull = true;
+  public paymentSuccesfull = false;
 
   constructor(private store: Store, private router: Router) {}
 
   async ngOnInit() {
-    await this.init();
-
     //Check if Store has products
     this.validateRoute();
   }
 
-  async init() {
-    const response = await this.store.dispatch(new FetchProducts()).toPromise();
-    const products = response.marketplace.productsStore.products;
-    await this.store.dispatch(new AddProductToCart(products[0])).toPromise();
-  }
+
 
   validateRoute() {
     const total = this.store.selectSnapshot(MarketplaceState.getCartTotal);

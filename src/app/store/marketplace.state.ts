@@ -150,12 +150,14 @@ export class MarketplaceState {
       const cartProductsIds = cartStore.products.map(item => item.id)
 
       // Reduce Wallet Balance and Update Purchases
-      userStore.balance = 0;
-      userStore.purchases.push({
+      const purchases = [...userStore.purchases];
+      purchases.push({
         total: cartTotal,
         date: new Date(),
         products:cartProducts
-      })
+      });
+      userStore.balance = 0;
+      userStore.purchases = purchases;
 
       // Remove Products from Store
       productsStore.products = productsStore.products.filter(product => !cartProductsIds.includes(product.id))
@@ -167,6 +169,7 @@ export class MarketplaceState {
 
       setState({
         ...state,
+        userStore: userStore,
         productsStore: productsStore,
         cartStore: cartStore
       });

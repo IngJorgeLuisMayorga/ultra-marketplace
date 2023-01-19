@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { ModulesModule } from './modules/modules.module';
 import { SharedModule } from './shared/shared.module';
 import { MarketplaceState } from './store/marketplace.state';
-
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ModulesModule,
     SharedModule,
     HttpClientModule,
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsModule.forRoot([MarketplaceState], {
       developmentMode: !environment.production
     })
