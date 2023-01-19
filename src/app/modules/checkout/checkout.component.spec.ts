@@ -2,11 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxsModule, Store} from '@ngxs/store';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { CheckoutComponent } from './checkout.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MarketplaceState } from 'src/app/store/marketplace.state';
 import { AddProductToCart, FetchProducts } from 'src/app/store/marketplace.actions';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('CheckoutComponent', () => {
 
@@ -17,7 +19,9 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, SharedModule, NgxsModule.forRoot([MarketplaceState]), HttpClientTestingModule],
+      imports: [RouterTestingModule,
+        SharedModule, FormsModule, InputTextModule , ReactiveFormsModule, RouterTestingModule,
+        NgxsModule.forRoot([MarketplaceState]), HttpClientTestingModule],
       declarations: [ CheckoutComponent ]
     })
     .compileComponents();
