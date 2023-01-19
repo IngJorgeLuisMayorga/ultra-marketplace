@@ -18,6 +18,8 @@
 
 
 ## About The Project
+This project is an Angular application that acts as a simple app marketplace. It features a gallery of products that users can browse through and add to a cart. The cart section displays the total cost of the items selected for purchase. Users can then fill out a form with their personal information and simulate a purchase. The project includes unit tests for each requirement and a few end-to-end tests for overall testing. The project was built using components, services, mocks, and the NGXS store. 
+
 
 ## Getting Starter
 
