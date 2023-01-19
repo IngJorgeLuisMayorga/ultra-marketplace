@@ -4,6 +4,7 @@ import { combineLatest, combineLatestAll, forkJoin, map, merge, Observable } fro
 import { mock_src } from 'src/app/shared/helpers/mockSrc';
 import { AddProductToCart, FetchProducts, RemoveProductToCart } from 'src/app/store/marketplace.actions';
 import { MarketplaceState } from 'src/app/store/marketplace.state';
+import { environment } from 'src/environments/environment';
 import { Product } from '../products/models/Product.model';
 
 @Component({
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
   @Select(MarketplaceState.getBalance) balance$!: Observable<number>;
 
   public isDisabled$: Observable<boolean> =  combineLatest([this.total$, this.balance$]).pipe(map(response => response[0] >= response[1] ))
+  public empty_cart_src = `${environment.assets}assets/icons/empty-cart.png`;
 
 
   constructor(private store: Store) {

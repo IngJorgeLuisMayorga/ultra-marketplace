@@ -33,7 +33,7 @@
     </ul>
 
     <div class="cart__empty" *ngIf="(products$ | async)?.length === 0">
-      <img src="./assets/icons/empty-cart.png" alt="Empty Cart">
+      <img [src]="empty_cart_src" alt="Empty Cart">
         <h1>Your Basket is Currently Empty!</h1>
         <a [routerLink]="'/products'"> Return to Shop </a>
     </div>

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   mock: true,
-  endpoint: ''
+  endpoint: '',
+  assets:'https://ingjorgeluismayorga.github.io/ultra-marketplace/'
 };
 
 /*
