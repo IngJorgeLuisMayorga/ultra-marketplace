@@ -1,3 +1,4 @@
+import { ICheckout } from "../modules/checkout/models/ICheckout.model";
 import { Product } from "../modules/products/models/Product.model";
 
 export class FetchProducts {
@@ -13,4 +14,9 @@ export class AddProductToCart{
 export class RemoveProductToCart{
   static readonly type = '[Cart] Remove Product from Car';
   constructor(public payload: Product) {}
+}
+
+export class SubmitPayment{
+  static readonly type = '[Payment] Submit Payment';
+  constructor(public payload: ICheckout) {}
 }

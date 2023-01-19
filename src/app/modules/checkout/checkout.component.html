@@ -1,20 +1,128 @@
 <app-layout>
+  <div class="checkout">
 
- <div class="checkout">
-  <form class="checkout__form" [formGroup]="form"  (ngSubmit)="formSubmit()">
+    <form class="checkout__form" [formGroup]="form" (ngSubmit)="formSubmit()" *ngIf="!paymentSuccesfull">
+      <br />
 
+      <br />
 
-    <div class="field">
-        <label for="firstname" class="block">First name</label>
-        <input id="firstname" type="username" formControlName="firstname" aria-describedby="firstname-help" class="ng-invalid ng-dirty" pInputText />
-        <small id="firstname-help" class="p-error block">Username is not available.</small>
+      <br />
+      <div class="field field-names">
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="firstname"
+          />
+          <label for="float-input">First name *</label>
+          <small id="firstname-help" class="p-error block">
+            <h5 [hidden]="!!isValidFirstname">Firstname is not valid.</h5>
+          </small>
+        </span>
+
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="lastname"
+          />
+          <label for="float-input">Last name *</label>
+          <small id="lastname-help" class="p-error block">
+            <h5 [hidden]="!!isValidLastname">Lastname is not valid.</h5>
+          </small>
+        </span>
+      </div>
+
+      <hr style="opacity: 0.15" />
+      <br />
+      <div class="field field-address">
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="address"
+          />
+          <label for="float-input">Address * </label>
+          <small id="address-help" class="p-error block">
+            <h5 [hidden]="!!isValidAddres">Address is not valid.</h5>
+          </small>
+        </span>
+      </div>
+
+      <hr style="opacity: 0.15" />
+
+      <br />
+      <div class="field field-city-and-state">
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="city"
+          />
+          <label for="float-input">City</label>
+          <small id="city-help" class="p-error block">
+            <h5 [hidden]="!!isValidCity">Firstname is not valid.</h5>
+          </small>
+        </span>
+
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="state"
+          />
+          <label for="float-input">State</label>
+          <small id="state-help" class="p-error block">
+            <h5 [hidden]="!!isValidState">State is not valid.</h5>
+          </small>
+        </span>
+      </div>
+
+      <hr style="opacity: 0.15" />
+
+      <br />
+      <div class="field field-names">
+        <span class="p-float-label">
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="email"
+          />
+          <label for="float-input">Email*</label>
+          <small id="email-help" class="p-error block">
+            <h5 [hidden]="!!isValidEmail">Email is not valid.</h5>
+          </small>
+        </span>
+      </div>
+
+      <br>
+      <br>
+
+      <h1 class="total">
+        Total {{  total$ | async | currency }}
+      </h1>
+
+      <br>
+      <br>
+
+      <div class="field-submit">
+        <button type="submit">
+          Pay
+        </button>
+      </div>
+
+    </form>
+
+    <div class="checkout__thanku" *ngIf="paymentSuccesfull">
+      <h1>Thank you for your purchase</h1>
+      <button [routerLink]="'/products'"> Buy more </button>
     </div>
 
-
-  </form>
-
-  {{form.value | json}}
-
- </div>
-
+  </div>
 </app-layout>

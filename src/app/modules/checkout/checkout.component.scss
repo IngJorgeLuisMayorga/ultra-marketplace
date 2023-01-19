@@ -1,6 +1,129 @@
-.checkout{
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+.checkout {
   display: block;
   width: 100%;
-  max-width: 500px;
-  margin:  0 auto;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.checkout__form, .checkout__thanku {
+  display: block;
+  width: 100%;
+  padding: 1em 3em;
+  border-radius: 1em;
+  background-color: $color-dark-purple;
+  color: $color-white;
+
+  box-shadow: 0 9px 46px rgba($color-dark-purple, 12%),
+    0 24px 38px rgba($color-dark-purple, 14%),
+    0 20px 80px rgba($color-dark-purple, 25%);
+}
+
+
+.checkout__form {
+  .field-names {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .p-float-label {
+    padding-right: 1em;
+    color: $color-white;
+  }
+  label {
+    background-color: $color-dark-purple;
+    color: white;
+  }
+  input {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: white;
+  }
+  input:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+  }
+  input.p-filled {
+    box-shadow: inset 0 0 0 1px #673ab7, inset 0 0 0 1px #673ab7,
+      inset 0 0 0 1px #673ab7, inset 0 0 0 1px #673ab7;
+  }
+  small {
+    display: block;
+    padding-left: 0px;
+    padding-top: 12px;
+    color: #ad5767;
+  }
+  span {
+  }
+}
+
+
+.checkout__form  .field-address input{
+  width: 100%;
+}
+
+.field-city-and-state{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.field-submit{
+  display: flex;
+
+  width: 100%;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+
+  button[type="submit"]{
+    background-color: $color-purple;
+    color: white;
+    padding: 1em 2em;
+    text-align: center;
+    border-radius: 1em;
+    font-size: 14px;
+    border-color: #673ab7;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+.checkout__thanku{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 350px;
+
+
+  h1{
+    font-size: $font-size-xl;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 0.5em 0em;
+  }
+
+  button{
+    background-color: rgba(0,0,0,0.1);
+    color: white;
+    padding: 1em 2em;
+    text-align: center;
+    border-radius: 1em;
+    font-size: 14px;
+    border-color: $color-purple;
+    outline: none;
+    cursor: pointer;
+    font-size: $font-size-m;
+    letter-spacing: 1px;
+    margin: 1.5em 0em;
+  }
 }

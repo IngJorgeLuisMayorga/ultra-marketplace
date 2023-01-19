@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {State, Action, StateContext, Selector} from '@ngxs/store';
 import { tap } from 'rxjs';
+import { ICheckout } from '../modules/checkout/models/ICheckout.model';
 import { Product } from '../modules/products/models/Product.model';
 import { ProductsRepositoryService } from '../modules/products/services/products-repository.service';
 import { mock_src } from '../shared/helpers/mockSrc';
-import { AddProductToCart, FetchProducts, RemoveProductToCart } from './marketplace.actions';
+import { AddProductToCart, FetchProducts, RemoveProductToCart, SubmitPayment } from './marketplace.actions';
 import { DefaultMarketPlace, IMarketplace } from './marketplace.model';
 
 @State<IMarketplace>({
@@ -127,6 +128,42 @@ export class MarketplaceState {
       cartStore.products = cartStore.products.filter(item => item.id !== productId);
       cartStore.count = cartStore.products.length;
       cartStore.total = cartStore.products.map(item => item.price).reduce((curr, sum) => (curr) + sum, 0);
+
+      setState({
+        ...state,
+        productsStore: productsStore,
+        cartStore: cartStore
+      });
+
+    }
+
+
+  @Action(SubmitPayment)
+    submitPayment({getState, setState}: StateContext<IMarketplace>, checkout: ICheckout) {
+
+      const state = getState();
+      const userStore = Object.assign({}, {...state.userStore });
+      const productsStore = Object.assign({}, {...state.productsStore });
+      const cartStore = Object.assign({}, {...state.cartStore });
+      const cartTotal = cartStore.total;
+      const cartProducts = cartStore.products;
+      const cartProductsIds = cartStore.products.map(item => item.id)
+
+      // Reduce Wallet Balance and Update Purchases
+      userStore.balance = 0;
+      userStore.purchases.push({
+        total: cartTotal,
+        date: new Date(),
+        products:cartProducts
+      })
+
+      // Remove Products from Store
+      productsStore.products = productsStore.products.filter(product => !cartProductsIds.includes(product.id))
+
+      // Clear Cart
+      cartStore.count = 0;
+      cartStore.total = 0;
+      cartStore.products = [];
 
       setState({
         ...state,
