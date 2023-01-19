@@ -37,6 +37,13 @@ npm install
 npm run start
 ````
 
+Default entry point is
+````
+http://localhost:4200/ultra-marketplace/
+````
+
+If you have Redux extension in yout browser, you can check all store mutations and states.
+
 3. Run Unit Test
 ````
 npm run test
