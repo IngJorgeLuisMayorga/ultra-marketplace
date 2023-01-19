@@ -21,9 +21,33 @@
 
 ## Getting Starter
 
+1. Install dependencies
+````
+```
 npm install
-npm run start
+```
+````
 
+2. Run live server 
+````
+```
+npm run start
+```
+````
+
+3. Run Unit Test
+````
+```
+npm run test
+```
+````
+
+4. Run E2E Test
+````
+```
+npm run cypress:run
+```
+````
 
 
 
