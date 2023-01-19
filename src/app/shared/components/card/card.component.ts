@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card',
@@ -24,6 +25,8 @@ export class CardComponent implements OnInit {
 
   @Output()
   onClick = new EventEmitter();
+
+  public cart_ok_src = `${environment.assets}assets/icons/ecommerce.png`;
 
   public loading = true;
 
